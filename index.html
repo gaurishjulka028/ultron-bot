@@ -101,6 +101,7 @@
         <tbody>
           <tr><td>Server settings</td><td>Welcome channel, welcome message text, auto-role and log channel IDs, saved by <code>/setup</code>.</td><td>Until an admin turns the setting off.</td></tr>
           <tr><td>Warnings</td><td>Server ID, member ID, moderator ID, reason and time, saved by <code>/warn</code>.</td><td>Until cleared with <code>/clearwarns</code>.</td></tr>
+          <tr><td>AutoMod settings</td><td>Which rules are on, the chosen action, blocked words, allowed domains, and exempt channel and role IDs, saved by <code>/automod</code>.</td><td>Until an admin changes or removes them.</td></tr>
           <tr><td>Giveaways</td><td>Prize, host ID, channel and message IDs, end time, and the user IDs of people who pressed Enter.</td><td>Until deleted on request.</td></tr>
         </tbody>
       </table>
@@ -109,6 +110,7 @@
     <h2>What ULTRON uses but does not store</h2>
     <ul>
       <li><strong>Member join events.</strong> With the Server Members intent, ULTRON sees a new member's ID, username and avatar at the moment they join. It uses them to post the welcome message and give the auto-role. It does not keep a list of members.</li>
+      <li><strong>Message content for AutoMod.</strong> If a server turns AutoMod on, ULTRON reads the text of new messages in that server while it checks them for spam, links, Discord invites, excessive capital letters, mass mentions and blocked words. The text is checked in memory and is not saved. If a message breaks a rule, it is deleted, and the log channel entry records who, where and which rule, not the message text. Members with Manage Messages are never checked.</li>
       <li><strong>Moderation actions.</strong> Bans, kicks, mutes and similar actions are posted to the log channel the server chose. They live in that server's channel, not in ULTRON's database, except for warnings above.</li>
       <li><strong>Voice state.</strong> To play music, ULTRON sees which voice channel a member is in. Voice session details and the song you search for are sent to the music server (Lavalink) that streams the audio.</li>
       <li><strong>Command input.</strong> What you type into a slash command is used to answer that command and is then discarded.</li>
@@ -117,7 +119,7 @@
 
     <h2>What ULTRON does not collect</h2>
     <ul>
-      <li>The content of normal messages, or direct messages.</li>
+      <li>Direct messages, or message text for any purpose other than AutoMod checks.</li>
       <li>Online status, activity or presence.</li>
       <li>Email addresses, phone numbers, payment details or real names.</li>
     </ul>
@@ -194,5 +196,6 @@
     window.addEventListener('hashchange', show);
     show();
   })();
-</script></body>
+</script>
+
 </html>
