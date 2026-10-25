@@ -1,0 +1,198 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ULTRON Legal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { color-scheme: light dark; } body { margin: 0; }
+  /* Layout: one reading column, sticky two-tab switch (Privacy / Terms), data table for the privacy section. */
+  :root {
+    --bg: #f4f8f9;
+    --surface: #ffffff;
+    --fg: #0d1b21;
+    --muted: #4b6069;
+    --line: #d5e2e6;
+    --accent: #007c89;
+    --accent-soft: #dff4f6;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #071114; --surface: #0d1c21; --fg: #e6f3f5; --muted: #93aab2;
+      --line: #1d3640; --accent: #2ee6f2; --accent-soft: #0f2c32; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #071114; --surface: #0d1c21; --fg: #e6f3f5; --muted: #93aab2;
+    --line: #1d3640; --accent: #2ee6f2; --accent-soft: #0f2c32; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.65;
+    padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 64px;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  header { padding-block: 48px 28px; }
+  .brand { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  .lede { color: var(--muted); max-width: 60ch; margin: 0; }
+  .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+  nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+    border-bottom: 1px solid var(--line); display: flex; gap: 8px; padding-block: 10px;
+  }
+  nav a {
+    font-family: var(--display); font-weight: 500; font-size: 15px; color: var(--muted); text-decoration: none;
+    padding: 8px 16px; border-radius: 8px; border: 1px solid transparent;
+  }
+  nav a[aria-current="true"] { color: var(--fg); background: var(--accent-soft); border-color: var(--line); }
+  nav a:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  section.doc { padding-top: 32px; }
+  section.doc[hidden] { display: none; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 36px 0 8px; text-wrap: balance; }
+  h2:first-child { margin-top: 0; }
+  p, li { max-width: 68ch; }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  code { font-family: var(--mono); font-size: .9em; background: var(--accent-soft); padding: 1px 6px; border-radius: 5px; }
+
+  .tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin: 14px 0 18px; }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14.5px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  th { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; width: 22%; }
+
+  .note { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 14px 0; max-width: 68ch; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+</style>
+
+<body><div class="wrap">
+  <header>
+    <p class="brand">ULTRON</p>
+    <h1>Privacy Policy and Terms of Service</h1>
+    <p class="lede">ULTRON is a multipurpose Discord bot for moderation, giveaways, music, welcome messages and server tools. This page explains what data it handles and the rules for using it.</p>
+    <p class="meta">Last updated 25 October 2026</p>
+  </header>
+
+  <nav aria-label="Document">
+    <a href="#privacy" id="tab-privacy">Privacy Policy</a>
+    <a href="#terms" id="tab-terms">Terms of Service</a>
+  </nav>
+
+  <section class="doc" id="privacy">
+    <h2>Who runs ULTRON</h2>
+    <p>ULTRON is built and operated by Gaurish Julka (the "operator"). If you have a question about this policy, contact us through the <a href="https://discord.gg/cDvGwgkNdw" rel="noopener">support server</a>.</p>
+
+    <h2>What ULTRON stores</h2>
+    <p>ULTRON keeps only what its features need. Discord IDs are stored as plain text identifiers.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Data</th><th>Why</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr><td>Server settings</td><td>Welcome channel, welcome message text, auto-role and log channel IDs, saved by <code>/setup</code>.</td><td>Until an admin turns the setting off.</td></tr>
+          <tr><td>Warnings</td><td>Server ID, member ID, moderator ID, reason and time, saved by <code>/warn</code>.</td><td>Until cleared with <code>/clearwarns</code>.</td></tr>
+          <tr><td>Giveaways</td><td>Prize, host ID, channel and message IDs, end time, and the user IDs of people who pressed Enter.</td><td>Until deleted on request.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>What ULTRON uses but does not store</h2>
+    <ul>
+      <li><strong>Member join events.</strong> With the Server Members intent, ULTRON sees a new member's ID, username and avatar at the moment they join. It uses them to post the welcome message and give the auto-role. It does not keep a list of members.</li>
+      <li><strong>Moderation actions.</strong> Bans, kicks, mutes and similar actions are posted to the log channel the server chose. They live in that server's channel, not in ULTRON's database, except for warnings above.</li>
+      <li><strong>Voice state.</strong> To play music, ULTRON sees which voice channel a member is in. Voice session details and the song you search for are sent to the music server (Lavalink) that streams the audio.</li>
+      <li><strong>Command input.</strong> What you type into a slash command is used to answer that command and is then discarded.</li>
+      <li><strong>Error logs.</strong> If something breaks, the host records the command name and an error message, which may include IDs. These are kept for a short time for debugging.</li>
+    </ul>
+
+    <h2>What ULTRON does not collect</h2>
+    <ul>
+      <li>The content of normal messages, or direct messages.</li>
+      <li>Online status, activity or presence.</li>
+      <li>Email addresses, phone numbers, payment details or real names.</li>
+    </ul>
+    <p>ULTRON does not sell or rent data, show advertising, or build profiles of members.</p>
+
+    <h2>Who else handles data</h2>
+    <ul>
+      <li><strong>Discord</strong> delivers all events and messages and has its own <a href="https://discord.com/privacy" rel="noopener">privacy policy</a>.</li>
+      <li><strong>Music servers.</strong> Audio is resolved and streamed by Lavalink nodes, some of which are run by third parties, and they fetch audio from sources such as YouTube. They receive the search text and the voice connection details they need to play audio.</li>
+      <li><strong>Hosting provider.</strong> ULTRON runs on a server that holds its database and logs.</li>
+    </ul>
+
+    <h2>Your choices and deletion</h2>
+    <ul>
+      <li>Server admins can turn off welcome messages, auto-role and logging with <code>/setup disable</code>, and remove a member's warnings with <code>/clearwarns</code>.</li>
+      <li>Removing ULTRON from a server stops all processing for that server.</li>
+      <li>To have the stored data for a server or for yourself deleted, ask in the <a href="https://discord.gg/cDvGwgkNdw" rel="noopener">support server</a>. Requests are handled within 30 days.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>Discord requires users to be at least 13 (or the minimum age in their country). ULTRON does not knowingly collect data from anyone younger.</p>
+
+    <h2>Security</h2>
+    <p>The bot's access token and database are kept private on the host and are never published. No system is perfectly secure, so we limit what is stored to reduce what could be exposed.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the date at the top of this page changes with it. Material changes are announced in the support server.</p>
+  </section>
+
+  <section class="doc" id="terms" hidden>
+    <h2>Using ULTRON</h2>
+    <p>By adding ULTRON to a server or using its commands, you agree to these terms. If you do not agree, remove the bot or stop using it.</p>
+
+    <h2>Follow Discord's rules</h2>
+    <p>You must follow the <a href="https://discord.com/terms" rel="noopener">Discord Terms of Service</a> and <a href="https://discord.com/guidelines" rel="noopener">Community Guidelines</a> when using ULTRON.</p>
+
+    <h2>Acceptable use</h2>
+    <ul>
+      <li>Do not use ULTRON to harass people, spam, or break the law.</li>
+      <li>Do not try to overload, exploit or reverse-engineer the bot, or bypass its permission checks.</li>
+      <li>Do not run giveaways or polls that are deceptive or promote prohibited content.</li>
+      <li>Do not use the music features to infringe copyright.</li>
+    </ul>
+
+    <h2>Moderation and giveaways</h2>
+    <p>Server staff are responsible for how they use ULTRON's moderation commands, and for running giveaways fairly and delivering prizes. The operator is not a party to any giveaway and is not responsible for prizes.</p>
+
+    <h2>Availability</h2>
+    <p>ULTRON is provided free and "as is". It may be down, change or lose features without notice, and music depends on third-party services that can fail. The operator is not liable for losses caused by downtime, bugs or moderation actions taken with the bot.</p>
+
+    <h2>Removal from use</h2>
+    <p>The operator may block a user or server from using ULTRON if these terms are broken, or if keeping them is a risk to the bot.</p>
+
+    <h2>Changes</h2>
+    <p>These terms may be updated, with the date at the top of this page. Continued use after a change means you accept it.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or problems? Join the <a href="https://discord.gg/cDvGwgkNdw" rel="noopener">support server</a>.</p>
+  </section>
+
+  <footer>ULTRON is not affiliated with or endorsed by Discord Inc.</footer>
+</div>
+
+<script>
+  (function () {
+    var tabs = { privacy: document.getElementById('tab-privacy'), terms: document.getElementById('tab-terms') };
+    function show() {
+      var key = location.hash === '#terms' ? 'terms' : 'privacy';
+      Object.keys(tabs).forEach(function (k) {
+        document.getElementById(k).hidden = k !== key;
+        tabs[k].setAttribute('aria-current', k === key ? 'true' : 'false');
+      });
+    }
+    window.addEventListener('hashchange', show);
+    show();
+  })();
+</script></body>
+</html>
